@@ -1,0 +1,1866 @@
+
+
+Projeto: Ninho Arcano
+Plataforma inicial: Android
+Tipo: Jogo mobile de cuidado, mistério, evolução em tempo real e dragão pessoal
+Stack recomendada: Expo + React Native + TypeScript
+Objetivo: Gerar um projeto completo, organizado, moderno, fluido, visualmente épico e pronto para compilar APK
+
+
+---
+
+1. MISSÃO DA IA CONSTRUTORA
+
+Você deve criar um aplicativo/jogo mobile completo chamado Ninho Arcano, pronto para rodar em Android e pronto para compilar APK.
+
+O jogo deve seguir fielmente o conceito abaixo:
+
+> Um universo caiu. Um ovo chegou até você.
+
+
+
+O jogador recebe um Ovo Arcano Primordial vindo de um universo destruído chamado Vaelun. Esse ovo cria um vínculo com o aparelho do jogador. Cada aparelho só pode ter um ovo/dragão por vez. O jogador cuida do ovo em um Berço Arcano neutro, oferece orbes elementais baseadas no Wu Xing e acompanha mudanças sutis até o nascimento do dragão.
+
+O jogo não deve parecer sistema, painel, lista ou CRUD. Deve parecer uma experiência viva, mágica, moderna, fluida, emocional e cinematográfica.
+
+Regra máxima de design:
+
+> Não mostrar sistema. Mostrar vida.
+
+
+
+
+---
+
+2. ESTILO E QUALIDADE ESPERADA
+
+O app deve ser construído com foco em experiência visual e emocional.
+
+Não criar interface quadrada, robótica, seca ou parecida com formulário.
+
+O jogo deve ter:
+
+abertura cinematográfica;
+
+frases surgindo com animação;
+
+fundo escuro e mágico;
+
+partículas suaves;
+
+transições fluidas;
+
+elementos flutuantes;
+
+orbes arrastáveis;
+
+Berço Arcano com vida;
+
+ovo pulsando;
+
+luz de tochas tremulando;
+
+runas acendendo;
+
+reações visuais e textuais;
+
+animações em todas as interações importantes;
+
+linguagem poética;
+
+tela principal visual, não cheia de menus.
+
+
+Priorize beleza, fluidez e experiência. O app pode usar bibliotecas de animação e efeitos. Ainda assim, mantenha o código organizado e estável para Android.
+
+
+---
+
+3. STACK OBRIGATÓRIA RECOMENDADA
+
+Criar projeto com:
+
+Expo;
+
+React Native;
+
+TypeScript;
+
+AsyncStorage para salvamento local;
+
+React Navigation;
+
+React Native Reanimated;
+
+React Native Gesture Handler;
+
+Expo Linear Gradient;
+
+Expo Blur ou BlurView, se disponível;
+
+Expo Haptics, se disponível;
+
+Expo AV para sons opcionais;
+
+Lottie ou animações por código, se necessário;
+
+Preferencialmente Skia ou componentes animados para partículas/orbes se a IA conseguir implementar de forma estável.
+
+
+O projeto deve estar pronto para rodar com:
+
+npm install
+npx expo start
+
+E preparado para build Android via EAS:
+
+npm install -g eas-cli
+eas build -p android --profile preview
+
+Também pode incluir alternativa para gerar APK local se possível, mas o caminho principal deve ser Expo/EAS.
+
+
+---
+
+4. ESTRUTURA DE PASTAS OBRIGATÓRIA
+
+Criar estrutura organizada:
+
+ninho-arcano/
+├── app.json
+├── package.json
+├── tsconfig.json
+├── eas.json
+├── App.tsx
+├── src/
+│   ├── assets/
+│   │   ├── images/
+│   │   ├── audio/
+│   │   └── lottie/
+│   ├── components/
+│   │   ├── animated/
+│   │   ├── cradle/
+│   │   ├── dragon/
+│   │   ├── egg/
+│   │   ├── orbs/
+│   │   ├── ui/
+│   │   └── effects/
+│   ├── constants/
+│   │   ├── colors.ts
+│   │   ├── elements.ts
+│   │   ├── lore.ts
+│   │   └── timings.ts
+│   ├── data/
+│   │   ├── dreams.ts
+│   │   ├── echoes.ts
+│   │   ├── foods.ts
+│   │   ├── omens.ts
+│   │   └── lineages.ts
+│   ├── engine/
+│   │   ├── ageEngine.ts
+│   │   ├── cradleEngine.ts
+│   │   ├── dragonEngine.ts
+│   │   ├── eggEngine.ts
+│   │   ├── foodEngine.ts
+│   │   ├── lineageEngine.ts
+│   │   ├── memoryEngine.ts
+│   │   ├── orbEngine.ts
+│   │   └── bondEngine.ts
+│   ├── hooks/
+│   │   ├── useGameState.ts
+│   │   ├── useDailyTick.ts
+│   │   ├── useHaptics.ts
+│   │   └── useAnimatedPulse.ts
+│   ├── navigation/
+│   │   └── RootNavigator.tsx
+│   ├── screens/
+│   │   ├── IntroScreen.tsx
+│   │   ├── BondScreen.tsx
+│   │   ├── CradleScreen.tsx
+│   │   ├── OrbsScreen.tsx
+│   │   ├── RitualsScreen.tsx
+│   │   ├── MemoriesScreen.tsx
+│   │   ├── EchoesScreen.tsx
+│   │   ├── DreamsScreen.tsx
+│   │   ├── BirthRitualScreen.tsx
+│   │   ├── NameDragonScreen.tsx
+│   │   ├── TrueNestRevealScreen.tsx
+│   │   ├── DragonHomeScreen.tsx
+│   │   ├── FeedingScreen.tsx
+│   │   ├── StatusWhisperScreen.tsx
+│   │   ├── TravessiaScreen.tsx
+│   │   └── SettingsScreen.tsx
+│   ├── storage/
+│   │   ├── storageKeys.ts
+│   │   └── gameStorage.ts
+│   ├── types/
+│   │   └── game.ts
+│   └── utils/
+│       ├── random.ts
+│       ├── date.ts
+│       └── format.ts
+└── README.md
+
+
+---
+
+5. LORE OFICIAL
+
+5.1 Vaelun
+
+O universo original dos dragões se chama Vaelun.
+
+Em Vaelun, os dragões não eram lenda. Eles tinham ninhos, escolas, clãs, linhagens, guardiões, sociedades e tradições. Toda a vida dracônica era moldada pelas cinco forças do Wu Xing:
+
+Madeira;
+
+Fogo;
+
+Terra;
+
+Metal;
+
+Água.
+
+
+5.2 A Queda dos Ninhos
+
+Vaelun foi destruído no evento chamado:
+
+A Queda dos Ninhos
+
+Quando Vaelun caiu, os últimos guardiões reuniram os Ovos Arcanos Primordiais e os enviaram através do vazio para este universo.
+
+O jogador recebe um desses ovos.
+
+Frase oficial:
+
+> Você não escolheu um dragão. Você recebeu um sobrevivente de Vaelun.
+
+
+
+
+---
+
+6. REGRAS CENTRAIS DO JOGO
+
+6.1 Um aparelho, um ovo
+
+Regra absoluta:
+
+> Cada aparelho só pode sustentar um único Ovo Arcano Primordial por vez.
+
+
+
+Enquanto existir um ovo/dragão vinculado ao aparelho, nenhum outro ovo pode surgir.
+
+A experiência deve deixar isso muito claro no início.
+
+6.2 Travessia
+
+A única forma de liberar o aparelho é realizar a Travessia.
+
+Travessia significa mover o vínculo para outro aparelho. Não é cópia. Não é duplicação.
+
+Frase oficial:
+
+> Um vínculo não se copia. Um vínculo atravessa.
+
+
+
+Nesta versão local/offline, criar a tela de Travessia como função futura simulada/explicativa. No futuro online, ela precisará transferir o vínculo via servidor.
+
+6.3 Energia não acelera idade
+
+As energias moldam o ovo e o Berço. Elas não aceleram o tempo.
+
+Regra oficial:
+
+> A energia molda. O tempo revela.
+
+
+
+6.4 Tempo real
+
+Regra de idade:
+
+1 dia real = 1 ano dracônico
+
+Dragões podem viver até 10.000 anos dracônicos.
+
+Dragões só são adultos a partir de 1.000 anos dracônicos.
+
+A Fase 1 vai apenas até Filhote II.
+
+
+---
+
+7. ESCOPO DA FASE 1
+
+A Fase 1 cobre:
+
+Fase	Idade
+
+Ovo	incubação
+Recém-nascido	0 a 10 anos dracônicos
+Filhote I	10 a 50 anos dracônicos
+Filhote II	50 a 120 anos dracônicos
+
+
+Não incluir nesta fase:
+
+escola;
+
+sociedade dracônica;
+
+clãs;
+
+profissões;
+
+economia global;
+
+batalhas online;
+
+dragão adulto;
+
+reprodução;
+
+earn-to-earn real;
+
+marketplace.
+
+
+
+---
+
+8. ABERTURA CINEMATOGRÁFICA
+
+A entrada do aplicativo deve ser épica, moderna e emocional.
+
+Nada de tela simples com texto estático.
+
+Criar uma abertura com:
+
+fundo escuro cósmico;
+
+partículas lentas;
+
+silhueta de um universo quebrado;
+
+flashes de ninhos caindo;
+
+ovo atravessando o vazio;
+
+frases surgindo com fade, brilho ou movimento;
+
+som ambiente opcional, profundo e místico;
+
+transição suave para o Berço Arcano.
+
+
+8.1 Texto da abertura
+
+Usar texto em partes, não tudo de uma vez:
+
+Em Vaelun, os dragões não eram lenda.
+
+Eles viviam entre cinco forças:
+Madeira, Fogo, Terra, Metal e Água.
+
+Cada ninho guardava uma linhagem.
+Cada linhagem carregava uma história.
+Cada ovo era uma promessa de futuro.
+
+Mas então veio A Queda dos Ninhos.
+
+Os céus de Vaelun se romperam.
+As escolas silenciaram.
+Os clãs desapareceram.
+
+No último ato desesperado,
+os guardiões enviaram seus ovos através do vazio.
+
+Um deles chegou até este aparelho.
+
+Um universo caiu.
+Um ovo chegou até você.
+
+Depois mostrar botão:
+
+> Continuar
+
+
+
+8.2 Direção visual da abertura
+
+Tela inicial deve ter:
+
+imagem/arte de Vaelun em colapso ou fundo procedural escuro;
+
+fragmentos flutuantes;
+
+luz distante;
+
+um ovo pequeno vindo do fundo;
+
+zoom lento;
+
+brilho suave envolvendo a tela;
+
+transição para a caverna do Berço Arcano.
+
+
+Se não houver assets finais, criar arte procedural com gradientes, partículas e formas luminosas, mas preparar estrutura para substituir por imagens reais depois.
+
+
+---
+
+9. ACEITAR O VÍNCULO
+
+Após a abertura, mostrar tela de vínculo.
+
+A tela deve parecer ritual, não contrato.
+
+Texto:
+
+Este aparelho pode sustentar apenas um Ovo Arcano Primordial.
+
+Ao aceitar o vínculo, este ovo passará a existir aqui.
+
+Enquanto ele permanecer neste aparelho, nenhum outro ovo poderá surgir.
+
+A única forma de liberar este aparelho é realizar a Travessia.
+
+Botão principal:
+
+> Aceitar o vínculo
+
+
+
+Botão secundário:
+
+> Ainda não
+
+
+
+Ao aceitar:
+
+gerar bondId único local;
+
+marcar hasAcceptedBond = true;
+
+criar game state inicial;
+
+ir para Berço Arcano.
+
+
+
+---
+
+10. BERÇO ARCANO — VISUAL OFICIAL
+
+O Berço Arcano é o ninho inicial neutro.
+
+10.1 Visual obrigatório
+
+O Berço deve ser:
+
+uma câmara/caverna de pedra bege;
+
+antiga;
+
+silenciosa;
+
+sagrada;
+
+acolhedora;
+
+misteriosa;
+
+com sinais arcanos mal iluminados nas paredes e no chão;
+
+com algumas tochas suaves ao redor;
+
+com luz âmbar iluminando o ovo;
+
+com uma base de pedra esculpida no centro.
+
+
+Ele não deve parecer:
+
+ninho de fogo;
+
+ninho de água;
+
+ninho de floresta;
+
+caverna de cristal;
+
+templo tecnológico;
+
+ambiente que revele elemento.
+
+
+A base visual deve ser neutra.
+
+10.2 Camadas visuais recomendadas
+
+Montar a cena por camadas:
+
+fundo da caverna bege
+runas de parede
+runas de chão
+base de pedra do ovo
+tochas
+luz das tochas
+sombra ambiente
+ovo
+partículas
+orbes
+interface leve
+
+Se os assets não existirem, criar placeholders bonitos por código e deixar comentários claros indicando onde substituir por imagens finais.
+
+10.3 Animações do Berço
+
+tochas tremulando;
+
+runas piscando levemente;
+
+partículas subindo;
+
+luz respirando;
+
+sombra pulsando;
+
+Berço reagindo quando recebe orbe.
+
+
+
+---
+
+11. OVO ARCANO PRIMORDIAL — VISUAL OFICIAL
+
+O ovo inicial é igual para todos.
+
+Ele deve ser neutro e misterioso.
+
+11.1 Visual base
+
+Ovo neutro deve ter:
+
+casca bege escura, pedra clara antiga ou perolada fosca;
+
+textura de cerâmica viva/pedra arcana;
+
+runas quase apagadas;
+
+brilho interno muito fraco;
+
+sem cor elemental dominante;
+
+sem raízes fortes;
+
+sem chamas;
+
+sem cristais grandes;
+
+sem água evidente;
+
+sem metal dominante;
+
+forma sagrada e frágil.
+
+
+Ele deve transmitir:
+
+> Ainda não sabemos o que vive aqui dentro.
+
+
+
+11.2 Camadas do ovo
+
+Implementar visual por camadas:
+
+ovo base neutro
+brilho interno neutro
+marca madeira
+marca fogo
+marca terra
+marca metal
+marca água
+rachadura leve 1
+rachadura leve 2
+aura estado atual
+
+As marcas devem aparecer por opacidade conforme energia acumulada.
+
+Nunca transformar o ovo em “ovo de fogo” ou “ovo de água” óbvio.
+
+
+---
+
+12. ORBES ELEMENTAIS — WU XING
+
+As energias aparecem como orbes vivas flutuando.
+
+Não usar lista. Não usar dropdown. Não usar botão seco.
+
+O jogador deve tocar e arrastar as orbes.
+
+12.1 Elementos
+
+Madeira;
+
+Fogo;
+
+Terra;
+
+Metal;
+
+Água.
+
+
+12.2 Visual das orbes
+
+Elemento	Visual
+
+Madeira	verde, orgânico, fios como raízes, brilho vivo
+Fogo	âmbar/vermelho, brasas, calor ondulante
+Terra	dourado/marrom, peso visual, poeira mineral
+Metal	prata/cinza, brilho limpo, reflexo cortante
+Água	azul profundo, líquido, névoa suave
+
+
+12.3 Interação correta
+
+Na tela principal, as orbes flutuam ao redor do ovo.
+
+Fluxo:
+
+Orbe flutua
+↓
+Jogador toca e segura
+↓
+Orbe aumenta brilho
+↓
+Jogador arrasta
+↓
+Se soltar sobre o ovo: oferecer ao ovo
+↓
+Se soltar sobre chão/base/parede do Berço: infundir no Berço
+↓
+Cena reage visualmente
+↓
+Mensagem poética aparece
+
+Não perguntar em menu para onde vai. O gesto decide.
+
+12.4 Zonas de drop
+
+Criar duas zonas invisíveis:
+
+eggDropZone;
+
+cradleDropZone.
+
+
+Se a orbe for solta no ovo, aplicar offerOrbToEgg(element).
+
+Se for solta no Berço, aplicar infuseOrbToCradle(element).
+
+
+---
+
+13. OFERECER AO OVO X INFUNDIR NO BERÇO
+
+13.1 Oferecer ao Ovo
+
+Molda:
+
+linhagem;
+
+personalidade;
+
+talento;
+
+sonhos;
+
+sinais da casca;
+
+presságios;
+
+nascimento.
+
+
+Exemplo de feedback:
+
+> A orbe de Fogo tocou a casca. Por um instante, o ovo ficou morno como brasa escondida.
+
+
+
+13.2 Infundir no Berço
+
+Molda:
+
+ambiente;
+
+conforto;
+
+estabilidade;
+
+Ecos de Vaelun;
+
+Herança do Berço;
+
+visual futuro do ninho.
+
+
+Exemplo:
+
+> A orbe de Água se desfez sobre o Berço. A pedra bege ficou fria e silenciosa.
+
+
+
+13.3 Regra conceitual
+
+> O ovo forma a vida. O Berço guarda as marcas.
+
+
+
+
+---
+
+14. SISTEMA DE ESTADO DO JOGO
+
+Criar tipagem forte em TypeScript.
+
+14.1 GameState sugerido
+
+export type ElementKey = 'wood' | 'fire' | 'earth' | 'metal' | 'water';
+
+export type LifeStage =
+  | 'intro'
+  | 'egg'
+  | 'birth_ritual'
+  | 'newborn'
+  | 'child_i'
+  | 'child_ii';
+
+export type GameState = {
+  version: number;
+  bond: {
+    accepted: boolean;
+    bondId: string | null;
+    deviceLinked: boolean;
+    createdAt: string | null;
+    travessiaAvailable: boolean;
+  };
+  egg: {
+    exists: boolean;
+    incubationStartedAt: string | null;
+    incubationDaysRequired: number;
+    state: EggMood;
+    crackLevel: number;
+    visualMarks: Record<ElementKey, number>;
+    energy: Record<ElementKey, number>;
+    offeredToday: number;
+    dailyOfferLimit: number;
+  };
+  cradle: {
+    energy: Record<ElementKey, number>;
+    infusedToday: number;
+    dailyInfuseLimit: number;
+    heritageTraits: HeritageTrait[];
+    visualIntensity: Record<ElementKey, number>;
+  };
+  orbs: {
+    available: Orb[];
+    lastGeneratedAt: string | null;
+  };
+  dragon: {
+    exists: boolean;
+    id: string | null;
+    name: string | null;
+    bornAt: string | null;
+    lineage: string | null;
+    primaryElement: ElementKey | null;
+    secondaryElement: ElementKey | null;
+    stage: LifeStage | null;
+    hunger: number;
+    mood: DragonMood;
+    health: number;
+    bond: number;
+    maturity: number;
+    talent: string | null;
+    personality: string[];
+    foodPreferences: ElementKey[];
+  };
+  memories: MemoryEntry[];
+  dreams: DreamEntry[];
+  echoes: EchoEntry[];
+  settings: {
+    soundEnabled: boolean;
+    hapticsEnabled: boolean;
+    reducedMotion: boolean;
+    devMode: boolean;
+  };
+};
+
+
+---
+
+15. TEMPO REAL E AVANÇO DE IDADE
+
+Criar ageEngine.ts.
+
+Funções:
+
+calcular dias reais desde nascimento;
+
+converter para anos dracônicos;
+
+definir fase atual;
+
+aplicar efeitos de ausência;
+
+gerar evento diário.
+
+
+Regra:
+
+1 dia real = 1 ano dracônico
+
+Durante incubação, contar dias de incubação.
+
+Após nascimento, contar idade dracônica.
+
+Para desenvolvimento, criar botão discreto no modo dev:
+
+> Avançar 1 dia
+
+
+
+Esse botão deve ficar escondido em produção ou dentro de configurações de desenvolvedor.
+
+
+---
+
+16. INCUBAÇÃO
+
+Tempo padrão sugerido:
+
+14 dias reais
+
+Durante incubação, o jogador:
+
+observa;
+
+toca;
+
+escuta;
+
+oferece orbes ao ovo;
+
+infunde orbes no Berço;
+
+desbloqueia sonhos;
+
+desbloqueia Ecos;
+
+vê marcas surgirem.
+
+
+A incubação não deve ser só espera.
+
+
+---
+
+17. PRESSÁGIOS, SONHOS, ECOS E MEMÓRIAS
+
+17.1 Presságios
+
+Sinais curtos do ovo/Berço.
+
+Exemplos:
+
+O ovo sonhou com raízes atravessando pedra.
+
+A casca pareceu lembrar o som da chuva.
+
+Uma marca metálica apareceu e sumiu antes do amanhecer.
+
+
+17.2 Sonhos do Ovo
+
+Eventos simbólicos mais longos.
+
+Exemplo:
+
+> Você viu os ninhos de Vaelun sob um céu partido. Entre as cinzas, uma pequena raiz começou a crescer.
+
+
+
+17.3 Ecos de Vaelun
+
+Fragmentos de lore.
+
+Exemplo:
+
+> Os guardiões cantaram para que os ovos não sentissem medo durante a Travessia.
+
+
+
+17.4 Diário Vivo
+
+Não é log técnico. É memória poética.
+
+Exemplo:
+
+> Ano de Incubação 4 — O ovo reconheceu sua presença antes do toque. O Berço guardou uma orbe de Água em silêncio.
+
+
+
+Criar arquivos de dados:
+
+omens.ts;
+
+dreams.ts;
+
+echoes.ts;
+
+memoryEngine.ts.
+
+
+
+---
+
+18. RITUAL DE NASCIMENTO
+
+Quando a incubação completa, iniciar tela especial.
+
+Não trocar imagem simplesmente.
+
+Criar evento cinematográfico:
+
+Tela escurece
+↓
+Tochas tremem
+↓
+Runas do Berço acendem
+↓
+Ovo pulsa
+↓
+Rachaduras surgem
+↓
+Orbes que mais influenciaram aparecem ao redor
+↓
+Jogador toca e segura
+↓
+Luz cresce
+↓
+Dragão nasce
+
+Após nascimento:
+
+calcular linhagem;
+
+revelar elemento primário/secundário;
+
+revelar talento;
+
+revelar ninho verdadeiro;
+
+criar memória de nascimento;
+
+ir para tela de nomeação.
+
+
+
+---
+
+19. LINHAGENS INICIAIS
+
+Usar combinações do Wu Xing.
+
+19.1 Linhagens puras
+
+Elemento	Linhagem
+
+Madeira	Dragão das Raízes Vivas
+Fogo	Dragão das Brasas Vivas
+Terra	Dragão de Pedra Antiga
+Metal	Dragão de Escama Forjada
+Água	Dragão das Águas Profundas
+
+
+19.2 Linhagens híbridas iniciais
+
+Combinação	Linhagem
+
+Madeira + Fogo	Dragão da Brasa Verde
+Fogo + Terra	Dragão Vulcânico Jovem
+Terra + Metal	Dragão de Ferro Antigo
+Metal + Água	Dragão de Prata Líquida
+Água + Madeira	Dragão do Bosque Nebuloso
+Madeira + Terra	Dragão da Raiz de Pedra
+Fogo + Metal	Dragão da Forja Rubra
+Terra + Água	Dragão do Pântano Ancestral
+Metal + Madeira	Dragão dos Galhos de Aço
+Água + Fogo	Dragão da Névoa Ardente
+
+
+O app pode começar com 5 visuais principais e representar híbridos por descrições e pequenos detalhes visuais até existirem assets finais.
+
+
+---
+
+20. NINHO VERDADEIRO
+
+Após nascimento, revelar ninho verdadeiro.
+
+Ele é consequência da linhagem.
+
+Não existe escolha de ninho antes do nascimento.
+
+Exemplos:
+
+Linhagem	Ninho
+
+Raízes Vivas	Santuário das Raízes
+Brasas Vivas	Ninho das Brasas
+Pedra Antiga	Berço de Pedra
+Escama Forjada	Forja Silenciosa
+Águas Profundas	Gruta das Marés
+
+
+Aplicar Herança do Berço:
+
+se Berço recebeu muita Água, adicionar névoa/reflexos;
+
+se recebeu Fogo, adicionar calor/tochas intensas;
+
+se recebeu Madeira, adicionar marcas orgânicas;
+
+se recebeu Terra, adicionar solidez/pedra reforçada;
+
+se recebeu Metal, adicionar linhas prateadas.
+
+
+
+---
+
+21. RECÉM-NASCIDOS — VISUAL OFICIAL
+
+Todos os recém-nascidos devem parecer do mesmo universo, mas com traços elementais.
+
+Não devem parecer adultos.
+
+Características comuns:
+
+corpo pequeno;
+
+olhos grandes, mas sem parecer desenho infantil bobo;
+
+asas pequenas;
+
+cabeça ligeiramente maior;
+
+patas frágeis;
+
+expressão curiosa;
+
+movimento delicado;
+
+escamas ainda suaves;
+
+aura leve;
+
+aparência de vida recém-chegada.
+
+
+21.1 Recém-nascido de Madeira
+
+tons verde-musgo, oliva e dourado suave;
+
+chifres como galhos jovens;
+
+escamas com textura orgânica;
+
+olhos verdes vivos;
+
+pequenas marcas como raízes;
+
+comportamento curioso e afetuoso.
+
+
+21.2 Recém-nascido de Fogo
+
+tons âmbar, vermelho escuro e laranja suave;
+
+fissuras quentes pequenas;
+
+olhos dourados/alaranjados;
+
+respiração morna;
+
+cauda com brilho de brasa sutil;
+
+comportamento intenso e inquieto.
+
+
+21.3 Recém-nascido de Terra
+
+tons areia, pedra, marrom e cobre;
+
+escamas mais grossas;
+
+corpo um pouco robusto;
+
+chifres curtos;
+
+olhos calmos;
+
+postura firme.
+
+
+21.4 Recém-nascido de Metal
+
+tons prata, grafite e cinza azulado;
+
+escamas com brilho metálico leve;
+
+linhas simétricas;
+
+garras pequenas e definidas;
+
+olhar focado;
+
+postura observadora.
+
+
+21.5 Recém-nascido de Água
+
+tons azul profundo, azul acinzentado e violeta suave;
+
+escamas lisas;
+
+reflexos líquidos;
+
+olhos profundos;
+
+movimentos lentos;
+
+névoa leve ao redor.
+
+
+
+---
+
+22. FILHOTE I E FILHOTE II — VISUAL
+
+22.1 Filhote I
+
+Idade: 10 a 50 anos dracônicos.
+
+Visual:
+
+maior que recém-nascido;
+
+mais firme;
+
+asas um pouco mais abertas;
+
+chifres começando a crescer;
+
+marcas elementais mais visíveis;
+
+postura ainda brincalhona;
+
+não adulto.
+
+
+22.2 Filhote II
+
+Idade: 50 a 120 anos dracônicos.
+
+Deve parecer um “adolescente dracônico”.
+
+Visual:
+
+corpo mais alongado;
+
+olhar mais consciente;
+
+asas maiores, mas ainda em desenvolvimento;
+
+chifres mais definidos;
+
+cauda mais expressiva;
+
+marcas elementais evidentes;
+
+postura entre juventude e força;
+
+ainda não adulto;
+
+nada de aparência majestosa final.
+
+
+A mudança do Recém-nascido → Filhote I → Filhote II precisa ser evidente, mas Filhote II ainda deve parecer jovem.
+
+
+---
+
+23. ALIMENTAÇÃO PÓS-NASCIMENTO
+
+O ovo não come.
+
+Comida só entra depois que o dragão nasce.
+
+A alimentação influencia:
+
+fome;
+
+humor;
+
+saúde;
+
+vínculo;
+
+maturidade;
+
+preferências;
+
+pequenas reações elementais.
+
+
+A comida não acelera idade.
+
+Regra:
+
+> Comida sustenta a vida. Não apressa o tempo.
+
+
+
+23.1 Interface de alimentação
+
+Não usar lista quadrada.
+
+Usar bandeja circular, pequena cesta ritual ou ofertas flutuantes.
+
+O jogador arrasta alimento até o dragão.
+
+Feedback poético:
+
+> Ele comeu devagar. Depois encostou a cabeça perto da sua mão.
+
+
+
+23.2 Afinidade alimentar Wu Xing
+
+Afinidade	Alimentos
+
+Madeira	frutas, folhas, raízes, sementes
+Fogo	caldos mornos, frutos quentes, brasas suaves
+Terra	grãos, raízes densas, minerais nutritivos
+Metal	sais minerais, fragmentos macios, alimentos cristalizados
+Água	néctar, gotas profundas, peixes de névoa
+
+
+
+---
+
+24. DRAGÃO NÃO MORRE
+
+O dragão não morre por abandono.
+
+Se o jogador ficar ausente, ele pode entrar em:
+
+Sono Profundo
+
+Exemplo:
+
+> Ele entrou em Sono Profundo para preservar energia.
+
+
+
+Isso evita frustração cruel e mantém vínculo.
+
+
+---
+
+25. TELAS OBRIGATÓRIAS
+
+Criar as telas abaixo:
+
+25.1 IntroScreen
+
+Abertura cinematográfica de Vaelun.
+
+25.2 BondScreen
+
+Regra do vínculo, um aparelho/um ovo e Travessia.
+
+25.3 CradleScreen
+
+Tela principal da fase do ovo.
+
+Deve mostrar:
+
+Berço Arcano;
+
+Ovo neutro;
+
+orbes flutuantes;
+
+mensagem poética;
+
+acesso suave a memórias, rituais, ecos e configurações.
+
+
+25.4 Orbs interaction inside CradleScreen
+
+Preferencialmente não criar tela separada com lista. As orbes devem existir na cena principal.
+
+25.5 MemoriesScreen
+
+Diário Vivo.
+
+25.6 DreamsScreen
+
+Sonhos do ovo/dragão.
+
+25.7 EchoesScreen
+
+Ecos de Vaelun.
+
+25.8 BirthRitualScreen
+
+Nascimento cinematográfico.
+
+25.9 NameDragonScreen
+
+Nomear dragão.
+
+25.10 TrueNestRevealScreen
+
+Revelar ninho verdadeiro + Herança do Berço.
+
+25.11 DragonHomeScreen
+
+Tela principal depois do nascimento.
+
+25.12 FeedingScreen
+
+Alimentação ritualística.
+
+25.13 TravessiaScreen
+
+Tela explicativa/preparatória da Travessia.
+
+25.14 SettingsScreen
+
+Configurações simples.
+
+
+---
+
+26. NAVEGAÇÃO
+
+A navegação não deve parecer app empresarial.
+
+Usar navegação inferior discreta após o jogo iniciar:
+
+Ninho;
+
+Memórias;
+
+Ecos;
+
+Cuidados;
+
+Configurações.
+
+
+Mas a tela principal deve ser o foco visual.
+
+Menus devem surgir como painéis translúcidos, folhas mágicas ou cartões flutuantes arredondados.
+
+
+---
+
+27. PALETA VISUAL
+
+Base:
+
+Fundo profundo: #090B12
+Azul noite: #0B1020
+Pedra bege: #B79C76
+Pedra escura: #3A3129
+Dourado tocha: #F2B35B
+Runa apagada: #8B7358
+Runa acesa: #FFD58A
+Texto principal: #F8F1E7
+Texto secundário: #C8B8A0
+Madeira: #4ADE80
+Fogo: #F97316
+Terra: #A16207
+Metal: #CBD5E1
+Água: #38BDF8
+Roxo arcano: #7C3AED
+
+
+---
+
+28. COMPONENTES VISUAIS OBRIGATÓRIOS
+
+28.1 AnimatedBackground
+
+Fundo com partículas e gradiente.
+
+28.2 TorchLight
+
+Luz de tocha tremulante.
+
+28.3 ArcaneRunes
+
+Runas com intensidade animada.
+
+28.4 PrimordialEgg
+
+Ovo em camadas com pulso e marcas.
+
+28.5 FloatingOrb
+
+Orbe arrastável com brilho e haptics.
+
+28.6 WhisperText
+
+Texto poético curto que surge e desaparece.
+
+28.7 RitualPanel
+
+Painel circular/flutuante de ações.
+
+28.8 DragonSprite
+
+Dragão por fase/elemento com animação leve.
+
+28.9 FoodOffering
+
+Alimentos flutuantes ou bandeja ritualística.
+
+
+---
+
+29. ANIMAÇÕES OBRIGATÓRIAS
+
+Incluir animações para:
+
+abertura de texto;
+
+chegada do ovo;
+
+luz do Berço;
+
+tochas;
+
+runas;
+
+pulso do ovo;
+
+orbes flutuando;
+
+arraste de orbe;
+
+absorção da orbe no ovo;
+
+infusão da orbe no Berço;
+
+criação de presságio;
+
+sonho desbloqueado;
+
+Eco desbloqueado;
+
+nascimento;
+
+dragão respirando;
+
+dragão reagindo ao toque;
+
+alimentação.
+
+
+
+---
+
+30. SISTEMA DE SALVAMENTO
+
+Usar AsyncStorage.
+
+Chaves:
+
+GAME_STATE_KEY = '@ninho_arcano/game_state'
+DEVICE_BOND_KEY = '@ninho_arcano/device_bond'
+SETTINGS_KEY = '@ninho_arcano/settings'
+
+Sempre salvar após:
+
+aceitar vínculo;
+
+oferecer orbe;
+
+infundir Berço;
+
+gerar memória;
+
+nascer dragão;
+
+nomear;
+
+alimentar;
+
+avançar dia;
+
+alterar configurações.
+
+
+Criar função de reset em Settings apenas para desenvolvimento, com confirmação forte.
+
+
+---
+
+31. PROTEÇÃO DA REGRA UM APARELHO/UM OVO
+
+Nesta versão local:
+
+se DEVICE_BOND_KEY existir e houver vínculo ativo, não permitir novo ovo;
+
+ao abrir app, carregar vínculo existente;
+
+não mostrar botão “novo jogo” normal;
+
+reset só em modo dev ou confirmação extremamente clara.
+
+
+No futuro online:
+
+cada dragão terá ID global;
+
+cada vínculo terá deviceId;
+
+Travessia moverá o vínculo para outro aparelho;
+
+aparelho antigo será liberado.
+
+
+
+---
+
+32. MODO DEV
+
+Adicionar modo dev escondido ou acessível por configurações.
+
+Funções:
+
+avançar 1 dia;
+
+gerar orbes;
+
+forçar nascimento;
+
+resetar estado;
+
+visualizar energia interna.
+
+
+Mas nunca mostrar energia interna na experiência normal do jogador.
+
+
+---
+
+33. UX — O QUE NÃO FAZER
+
+Não fazer:
+
+lista de elementos para selecionar;
+
+menu perguntando se energia vai para ovo ou Berço;
+
+botão “+10 energia”;
+
+tela cheia de barras;
+
+interface quadrada;
+
+imagem antiga de ovo elemental;
+
+escolha de ninho inicial;
+
+escolha de dragão inicial;
+
+revelar elemento antes do nascimento;
+
+usar linguagem técnica;
+
+mostrar porcentagens exatas;
+
+acelerar idade com energia;
+
+matar o dragão por abandono.
+
+
+
+---
+
+34. UX — O QUE FAZER
+
+Fazer:
+
+cena viva;
+
+orbes arrastáveis;
+
+ovo neutro;
+
+Berço independente;
+
+linguagem poética;
+
+efeitos visuais;
+
+mistério;
+
+nascimento surpresa;
+
+ninho verdadeiro após nascimento;
+
+comida somente após nascimento;
+
+status como frases emocionais;
+
+números internos escondidos;
+
+animações suaves;
+
+experiência cinematográfica.
+
+
+
+---
+
+35. README OBRIGATÓRIO
+
+Criar README.md com:
+
+nome do projeto;
+
+descrição;
+
+requisitos;
+
+comandos para rodar;
+
+comandos para build Android;
+
+explicação do modo dev;
+
+estrutura de pastas;
+
+onde substituir assets finais;
+
+observações sobre Fase 1;
+
+próximas fases futuras.
+
+
+
+---
+
+36. DEPENDÊNCIAS SUGERIDAS
+
+Package.json deve incluir algo próximo de:
+
+{
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "latest",
+    "@react-navigation/native": "latest",
+    "@react-navigation/native-stack": "latest",
+    "expo": "latest",
+    "expo-av": "latest",
+    "expo-blur": "latest",
+    "expo-haptics": "latest",
+    "expo-linear-gradient": "latest",
+    "expo-status-bar": "latest",
+    "react": "latest",
+    "react-native": "latest",
+    "react-native-gesture-handler": "latest",
+    "react-native-reanimated": "latest",
+    "react-native-safe-area-context": "latest",
+    "react-native-screens": "latest"
+  },
+  "devDependencies": {
+    "@types/react": "latest",
+    "typescript": "latest"
+  }
+}
+
+Ajustar versões de acordo com Expo atual.
+
+
+---
+
+37. RESULTADO ESPERADO
+
+Ao final, entregar:
+
+projeto Expo completo;
+
+código TypeScript organizado;
+
+app rodando sem erros;
+
+experiência visual coerente;
+
+orbes arrastáveis;
+
+Berço Arcano neutro;
+
+Ovo Arcano Primordial neutro;
+
+sistema de energia para Ovo/Berço;
+
+incubação;
+
+nascimento surpresa;
+
+dragão recém-nascido;
+
+alimentação pós-nascimento;
+
+Filhote I/II;
+
+memórias, sonhos, Ecos e presságios;
+
+salvamento local;
+
+modo dev;
+
+instruções para compilar APK.
+
+
+
+---
+
+38. CRITÉRIO DE ACEITAÇÃO
+
+A versão só será considerada correta se:
+
+1. Não houver escolha inicial de dragão ou ninho.
+
+
+2. O jogador começar com Ovo Arcano Primordial neutro.
+
+
+3. O Berço Arcano for independente e neutro.
+
+
+4. A abertura de Vaelun for épica/cinematográfica.
+
+
+5. As orbes forem visuais e arrastáveis, não uma lista.
+
+
+6. O destino da orbe for decidido pelo gesto, não por menu.
+
+
+7. O ovo mudar de forma sutil sem revelar a linhagem.
+
+
+8. A linhagem só for revelada no nascimento.
+
+
+9. O ninho verdadeiro só aparecer após nascimento.
+
+
+10. A comida só aparecer depois que o dragão nascer.
+
+
+11. O app tiver linguagem poética e viva.
+
+
+12. O app não parecer sistema administrativo.
+
+
+13. A regra um aparelho/um ovo estiver clara.
+
+
+14. A Travessia estiver prevista.
+
+
+15. O projeto rodar e estar pronto para compilar APK.
+
+
+
+
+---
+
+39. FRASE FINAL DE DIREÇÃO
+
+Se tiver dúvida de design, código ou fluxo, seguir esta regra:
+
+> O jogador não está gerenciando um sistema. Ele está acolhendo uma vida que sobreviveu à queda de um universo.
+
+
+
+Tudo no app deve reforçar isso.
+
+Pronto, Wesley — criei no canvas o Prompt Mestre / Documento de Produção Completo do Ninho Arcano.
+
+Ele foi estruturado para uma IA construtora conseguir gerar o projeto do jogo com:
+
+abertura épica sobre Vaelun e A Queda dos Ninhos;
+
+regra de um aparelho, um ovo;
+
+Travessia;
+
+Berço Arcano neutro;
+
+Ovo Arcano Primordial neutro;
+
+orbes flutuantes e arrastáveis;
+
+gesto para decidir se a orbe vai ao ovo ou ao Berço;
+
+sistema de Herança do Berço;
+
+nascimento surpresa;
+
+recém-nascidos dos 5 elementos;
+
+Filhote I e Filhote II;
+
+alimentação pós-nascimento;
+
+animações obrigatórias;
+
+estrutura de pastas;
+
+stack recomendada;
+
+tipos de dados;
+
+engines internas;
+
+salvamento local;
+
+modo dev;
+
+critérios de aceitação;
+
+instruções para APK.
+
+

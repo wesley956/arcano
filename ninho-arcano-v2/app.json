@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "Ninho Arcano",
+    "slug": "ninho-arcano",
+    "version": "1.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "scheme": "ninhoarcano",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.wesley.ninhoarcano"
+    },
+    "android": {
+      "package": "com.wesley.ninhoarcano",
+      "permissions": []
+    },
+    "plugins": []
+  }
+}
