@@ -20,6 +20,7 @@
     "@react-navigation/native-stack": "latest",
     "expo": "~55.0.0",
     "expo-blur": "latest",
+    "expo-dev-client": "~55.0.28",
     "expo-haptics": "latest",
     "expo-linear-gradient": "latest",
     "expo-status-bar": "latest",
